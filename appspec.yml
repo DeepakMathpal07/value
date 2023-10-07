@@ -1,0 +1,14 @@
+version: 0.0
+os: linux
+files:
+  - source: docker-compose.yml
+    destination: /home/devops/backend
+hooks:
+  BeforeInstall:
+    - location: scripts/vm-backend-stop.sh
+      timeout: 120
+      runas: root
+  ApplicationStart:
+    - location: scripts/vm-backend-start.sh
+      timeout: 120
+      runas: devops

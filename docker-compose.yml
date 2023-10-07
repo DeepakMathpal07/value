@@ -1,0 +1,11 @@
+version: '3.1'
+services:
+   vmbackend:
+     image: valuematrix/vm-backend:latest
+     container_name: vmbackend
+     volumes:
+      - /home/devops/ApiServerEnv/.env:/usr/src/app/.env:ro
+      - /data/media:/usr/src/app/media:rw
+     ports:
+       - "9200:8000"
+                
