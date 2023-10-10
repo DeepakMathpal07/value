@@ -19,16 +19,10 @@ jobs:
       - name: Set up Node.js (for JavaScript)
         uses: actions/setup-node@v2
         with:
-          node-version: 14  # Adjust the version as needed
+          node-version: 18  # Adjust the version as needed
 
-      - name: Install dependencies using Yarn
-        run: yarn install  # Use yarn to install dependencies
+      - name: Install dependencies using npm
+        run: npm install  # Use npm to install dependencies
 
-      - name: Install Snyk CLI
-        run: npm install -g snyk  # Install the Snyk CLI
-
-      - name: Authenticate Snyk (replace with your Snyk token)
-        run: snyk auth YOUR_SNYK_TOKEN  # Replace YOUR_SNYK_TOKEN with your actual Snyk token
-
-      - name: Run Security Scan with Snyk
-        run: snyk test  # Run security scan with Snyk
+      - name: Run npm audit for Security Scan
+        run: npm audit --production  # Run npm audit to check for vulnerabilities in production dependencies
